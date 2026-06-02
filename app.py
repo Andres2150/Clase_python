@@ -8,7 +8,6 @@ st.sidebar.image("dmc.jpg", use_container_width=True)
 st.write("Elaborado por Gabriel Mena")
 
 
-```python
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
