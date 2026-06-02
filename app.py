@@ -99,3 +99,28 @@ st.write("💼 LinkedIn: linkedin.com/in/gabrielmena")
 st.write("🐙 GitHub: github.com/Andres2150")
 
 st.success("Gracias por visitar mi perfil profesional.")
+
+
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+st.subheader("Matriz de Correlación Triangular")
+
+corr = df.T.corr()
+mask = np.triu(np.ones_like(corr, dtype=bool))
+
+fig, ax = plt.subplots(figsize=(10,8))
+
+sns.heatmap(
+    corr,
+    mask=mask,
+    cmap="RdBu_r",
+    annot=False,
+    square=True
+)
+
+st.pyplot(fig)
