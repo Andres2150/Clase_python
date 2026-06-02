@@ -7,9 +7,6 @@ st.sidebar.title("Parametros")
 st.sidebar.image("dmc.jpg", use_container_width=True)
 st.write("Elaborado por Gabriel Mena")
 
-
-
-```python
 # ==========================================================
 # DASHBOARD STREAMLIT
 # Determinantes del Acceso a la Salud en el Perú
