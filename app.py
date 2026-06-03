@@ -42,23 +42,32 @@ if pagina == "🏠 Inicio":
     st.write("""
     Bienvenido a mi portafolio profesional.
 
+    Profesional con amplia experiencia en el sector de hidrocarburos y GLP, especializado en análisis comercial, inteligencia de negocios y gestión de información para la toma de decisiones. Cuento con sólidos conocimientos de la cadena comercial de combustibles, normativa regulatoria del mercado peruano y funcionamiento operativo del Sistema de Control de Órdenes de Pedido (SCOP).
+
+Actualmente me desempeño como Asistente Comercial en el Centro de Control SCOP, donde participo en el monitoreo, análisis y seguimiento de operaciones comerciales vinculadas al abastecimiento y comercialización de combustibles a nivel nacional. Mi experiencia me permite comprender integralmente los procesos del sector, desde la generación y validación de pedidos hasta la atención y resolución de incidencias operativas de los agentes del mercado.
+
+Poseo cerca de nueve años de experiencia en análisis de datos, elaboración de reportes comerciales, generación de indicadores de gestión y desarrollo de informes Ad Hoc para distintas áreas de negocio. He trabajado con grandes volúmenes de información, identificando tendencias, oportunidades de mejora y patrones relevantes para la toma de decisiones estratégicas.
+
+Asimismo, he brindado capacitación y asistencia técnica a grifos, plantas envasadoras y distribuidores minoristas de combustibles líquidos y GLP, fortaleciendo mi capacidad para comunicar información técnica y regulatoria a diversos públicos.
+
+Actualmente busco consolidar mi carrera en áreas de Análisis Comercial, Business Intelligence, Data Analytics y Consultoría para el sector energético y agroindustrial, integrando conocimientos de negocio, análisis de datos y herramientas tecnológicas para generar valor y optimizar procesos.
+
     Este espacio reúne mi experiencia en:
 
-    • Business Intelligence
-
-    • Data Analytics
-
-    • Python
-
-    • SQL
-
-    • Power BI
-
-    • Machine Learning
-
-    • Forecasting
-
-    • Inteligencia Artificial
+        • Análisis Comercial y de Mercados
+        • Business Intelligence
+        • Power BI
+        • Excel Avanzado
+        • SQL
+        • Python para Análisis de Datos
+        • ETL y Transformación de Datos
+        • Indicadores KPI
+        • Dashboards Gerenciales
+        • Análisis de Tendencias Comerciales
+        • Mercado de Hidrocarburos y GLP
+        • Normativa SCOP y Regulación Energética
+        • Elaboración de Reportes Ejecutivos
+        • Consultoría de Negocios
 
     Utilice el menú lateral para navegar entre las secciones.
     """)
