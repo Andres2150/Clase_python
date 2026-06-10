@@ -322,4 +322,5 @@ elif pagina == "📊 Proyecto PBI LATAM":
 st.sidebar.markdown("---")
 st.sidebar.write("Gabriel Mena López")
 st.sidebar.write("Business Intelligence")
+st.sidebar.write("Linkedin: https://www.linkedin.com/in/andresmena1")
 
