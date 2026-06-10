@@ -35,6 +35,12 @@ pagina = st.sidebar.radio(
 # =====================================================
 
 
+
+
+# =====================================================
+# PROYECTO ENTREGABLE
+# =====================================================
+
 if pagina == "🏠 Inicio":
     st.title("📊 Portafolio Profesional")
     st.subheader("Gabriel Mena López")
@@ -250,7 +256,7 @@ Capacitación a empresas del sector energético sobre procesos comerciales, fluj
 # PROYECTO PBI LATAM
 # =====================================================
 
-elif pagina == "📊 Proyecto PBI LATAM":
+if pagina == "📊 Proyecto PBI LATAM":
 
     st.title("📊 Proyecto PBI América Latina")
 
@@ -314,11 +320,6 @@ elif pagina == "📊 Proyecto PBI LATAM":
         "Proyecto de análisis económico desarrollado en Python."
     )
 
-
-
-# =====================================================
-# PROYECTO ENTREGABLE
-# =====================================================
 
 elif pagina == "Entregable Python":
 
