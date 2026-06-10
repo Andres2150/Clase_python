@@ -26,7 +26,7 @@ pagina = st.sidebar.radio(
         "🏠 Inicio",
         "👨‍💼 Currículum",
         "📊 Proyecto PBI LATAM"
-        "📊 Proyecto entregable Python"
+        "Entregable Python"
     ]
 )
 
@@ -34,12 +34,10 @@ pagina = st.sidebar.radio(
 # INICIO
 # =====================================================
 
+
 if pagina == "🏠 Inicio":
-
     st.title("📊 Portafolio Profesional")
-
     st.subheader("Gabriel Mena López")
-
     st.write("""
     Bienvenido a mi portafolio profesional.
 
@@ -315,6 +313,13 @@ elif pagina == "📊 Proyecto PBI LATAM":
     st.success(
         "Proyecto de análisis económico desarrollado en Python."
     )
+
+elif pagina == "Entregable Python"
+
+    st.title("Proyecto Entregable")
+
+    st.write("")
+
 
 # =====================================================
 # PIE DE PÁGINA
