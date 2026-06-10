@@ -256,7 +256,7 @@ Capacitación a empresas del sector energético sobre procesos comerciales, fluj
 # PROYECTO PBI LATAM
 # =====================================================
 
-if pagina == "📊 Proyecto PBI LATAM":
+elif pagina == "📊 Proyecto PBI LATAM":
 
     st.title("📊 Proyecto PBI América Latina")
 
