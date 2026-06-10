@@ -394,7 +394,7 @@ if archivo:
             sns.heatmap(corr, mask=mask, annot=True, cmap="coolwarm", fmt=".2f", ax=ax, square=True)
             st.pyplot(fig)
 
-   with tab4:
+    with tab4:
         st.subheader("Estadísticos de Tendencia")
         st.table(df.describe().T)
 else:
