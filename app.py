@@ -362,10 +362,16 @@ if archivo:
     with tab2:
         st.subheader("Diagnóstico de Nulos")
         nulos = generar_reporte_nulos(df)
+        
         if not nulos.empty:
+            st.warning(f"Se encontraron valores nulos en {len(nulos)} columnas.")
             st.bar_chart(nulos)
         else:
-            st.success("¡Dataset limpio! No se encontraron valores nulos.")
+            st.success("¡Dataset perfecto! No se encontraron valores nulos.")
+            # Crear un gráfico de barras con ceros para todas las columnas
+            datos_cero = pd.Series(0, index=df.columns)
+            st.bar_chart(datos_cero)
+            st.info("Visualización: Todas las columnas tienen 0 valores nulos.")
 
     with tab3:
         st.subheader("Suite de Visualización")
