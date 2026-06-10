@@ -384,11 +384,17 @@ if archivo:
             st.pyplot(fig)
             
         elif tipo_graf == "Correlación (Heatmap)":
+            # Calcular la matriz de correlación
+            corr = df.select_dtypes(include=np.number).corr()
+            # Crear una máscara para ocultar el triángulo superior (línea 64)
+            mask = np.triu(np.ones_like(corr, dtype=bool))
+            
             fig, ax = plt.subplots(figsize=(10, 8))
-            sns.heatmap(df.select_dtypes(include=np.number).corr(), annot=True, cmap="coolwarm", ax=ax)
+            # Aplicar la máscara en el heatmap (línea 65)
+            sns.heatmap(corr, mask=mask, annot=True, cmap="coolwarm", fmt=".2f", ax=ax, square=True)
             st.pyplot(fig)
 
-    with tab4:
+   with tab4:
         st.subheader("Estadísticos de Tendencia")
         st.table(df.describe().T)
 else:
