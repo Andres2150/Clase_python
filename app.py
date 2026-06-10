@@ -369,10 +369,20 @@ if archivo:
 
     with tab3:
         st.subheader("Suite de Visualización")
-        tipo_graf = st.selectbox("Seleccionar tipo de gráfico", ["Relación (Plotly)", "Distribución (Seaborn)", "Correlación (Heatmap)"])
         
-        col_x = st.selectbox("Eje X", df.columns)
-        col_y = st.selectbox("Eje Y", df.select_dtypes(include=np.number).columns)
+        # Cambio de selectbox a radio horizontal para mejor diagramación
+        tipo_graf = st.radio(
+            "Seleccionar tipo de gráfico", 
+            ["Relación (Plotly)", "Distribución (Seaborn)", "Correlación (Heatmap)"],
+            horizontal=True
+        )
+        
+        # Layout horizontal para las selecciones de ejes
+        c1, c2 = st.columns(2)
+        with c1:
+            col_x = st.selectbox("Eje X", df.columns)
+        with c2:
+            col_y = st.selectbox("Eje Y", df.select_dtypes(include=np.number).columns)
 
         if tipo_graf == "Relación (Plotly)":
             fig = px.scatter(df, x=col_x, y=col_y, color=df.columns[0], template="plotly_dark")
@@ -384,13 +394,10 @@ if archivo:
             st.pyplot(fig)
             
         elif tipo_graf == "Correlación (Heatmap)":
-            # Calcular la matriz de correlación
             corr = df.select_dtypes(include=np.number).corr()
-            # Crear una máscara para ocultar el triángulo superior (línea 64)
             mask = np.triu(np.ones_like(corr, dtype=bool))
             
             fig, ax = plt.subplots(figsize=(10, 8))
-            # Aplicar la máscara en el heatmap (línea 65)
             sns.heatmap(corr, mask=mask, annot=True, cmap="coolwarm", fmt=".2f", ax=ax, square=True)
             st.pyplot(fig)
 
