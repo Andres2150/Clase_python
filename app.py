@@ -25,7 +25,7 @@ pagina = st.sidebar.radio(
     [
         "🏠 Inicio",
         "👨‍💼 Currículum",
-        "📊 Proyecto PBI LATAM"
+        "📊 Proyecto PBI LATAM",
         "👨‍💼 Entregable Python"
     ]
 )
