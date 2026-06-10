@@ -170,6 +170,7 @@ Capacitación a empresas del sector energético sobre procesos comerciales, fluj
     st.divider()
 
     st.markdown("### Diplomado en Data Science")
+    st.write("Analisis de datos y construcción de modelos de Machine Learning que permitan predecir resultados, segmentar clientes y apoyar la toma de decisiones basada en datos.
     st.write("Modelos Supervisados, Clusterización y Machine Learning")
     st.write("Instituto DMC")
     st.write("Noviembre 2025 – Marzo 2026")
