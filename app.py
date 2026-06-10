@@ -161,6 +161,14 @@ Capacitación a empresas del sector energético sobre procesos comerciales, fluj
 
     st.divider()
 
+    st.markdown("### Diplomado Business Analyst")
+    st.write("Modelos Supervisados, Clusterización y Machine Learning")
+    st.write("Instituto DMC")
+    st.write("Abril 2026 – Septiembre 2026")
+    st.write("116 horas")
+
+    st.divider()
+
     st.markdown("### Diplomado en Data Science")
     st.write("Modelos Supervisados, Clusterización y Machine Learning")
     st.write("Instituto DMC")
@@ -168,11 +176,18 @@ Capacitación a empresas del sector energético sobre procesos comerciales, fluj
     st.write("96 horas")
 
     st.divider()
-
+    
     st.markdown("### Programa Especializado en Machine Learning con Python")
     st.write("Laboratorio de Datos Sociales")
     st.write("Septiembre 2025 – Enero 2026")
     st.write("75 horas")
+
+    st.divider()
+    
+    st.markdown("### Especialización Power BI")
+    st.write("Instituto DMC")
+    st.write("Julio 2025 – Septiembre 2025")
+    st.write("44 horas")
 
     st.divider()
 
@@ -189,6 +204,13 @@ Capacitación a empresas del sector energético sobre procesos comerciales, fluj
     st.write("Noviembre 2024 – Enero 2025")
     st.write("120 horas")
 
+    st.divider()
+
+    st.markdown("### Especialización en SQL Server for BI ")
+    st.write("Instituto DMC")
+    st.write("Noviembre 2023 – Enero 2024")
+    st.write("44 horas")
+    
     st.divider()
 
     st.markdown("### Programación y Ciencia de Datos con Python y RStudio")
