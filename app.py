@@ -105,7 +105,7 @@ if pagina == "🏠 Inicio":
 elif pagina == "👨‍💼 Currículum":
 
     st.title("👨‍💼 Gabriel Mena López")
-    st.subheader("Business Intelligence | Data Analytics | Python")
+    st.subheader("Business Analyst | Data Analyst | BI Analyst | SQL | Python | Power BI | Machine Learning")
     st.write("""
     Profesional orientado al análisis de datos, Business Intelligence, automatización de reportes
     y generación de indicadores para la toma de decisiones.
@@ -140,7 +140,6 @@ elif pagina == "👨‍💼 Currículum":
     # ==========================================
 
     st.header("💼 Experiencia Profesional")
-
     st.markdown("""
     ### OSINERGMIN
 
@@ -160,134 +159,133 @@ elif pagina == "👨‍💼 Currículum":
     - Capacitación a empresas del sector energético sobre procesos comerciales, flujos operativos
       y normativa.
     """)
-            
-            # ==========================================
-            # FORMACIÓN ACADÉMICA
-            # ==========================================
-            
-            st.header("🎓 Formación Académica")
-            
-            st.markdown("### Bachiller en Ingeniería Industrial")
-            st.write("Universidad Tecnológica del Perú")
-            st.write("Egresado 2013")
-            
-            st.divider()
-            
-            # ==========================================
-            # DATOS, ANALÍTICA E IA
-            # ==========================================
-            
-            st.header("📊 Datos, Analítica e Inteligencia Artificial")
-            
-            st.markdown("### Diplomado Business Analyst")
-            st.write("Instituto DMC | Abril 2026 – Septiembre 2026 | 116 horas")
-            
-            st.divider()
-            
-            st.markdown("### Diplomado en Data Science")
-            st.write("Modelos Supervisados, Clusterización y Machine Learning")
-            st.write("Instituto DMC | Noviembre 2025 – Marzo 2026 | 96 horas")
-            
-            st.divider()
-            
-            st.markdown("### Programa Especializado en Machine Learning con Python")
-            st.write("Laboratorio de Datos Sociales | Septiembre 2025 – Enero 2026 | 75 horas")
-            
-            st.divider()
-            
-            st.markdown("### Programa de Alta Especialización en Análisis Predictivo")
-            st.write("Forecasting y Pronósticos")
-            st.write("Escuela Global | Enero – Junio 2025 | 200 horas")
-            
-            st.divider()
-            
-            st.markdown("### Especialización Power BI")
-            st.write("Instituto DMC | Julio 2025 – Septiembre 2025 | 44 horas")
-            
-            st.divider()
-            
-            st.markdown("### Especialización SQL Server for BI")
-            st.write("Instituto DMC | Noviembre 2023 – Enero 2024 | 44 horas")
-            
-            st.divider()
-            
-            st.markdown("### Programación y Ciencia de Datos con Python y RStudio")
-            st.write("Escuela Global | Setiembre – Diciembre 2023 | 170 horas")
-            
-            st.divider()
-            
-            # ==========================================
-            # ESPECIALIZACIÓN SECTORIAL
-            # ==========================================
-            
-            st.header("⚡ Especialización Sectorial")
-            
-            st.markdown("### Diplomado Especializado en Derecho de la Energía e Hidrocarburos")
-            st.write("ICADEG | Noviembre 2024 – Enero 2025 | 120 horas")
-            
-            st.divider()
-            
-            # ==========================================
-            # GESTIÓN INDUSTRIAL Y CALIDAD
-            # ==========================================
-            
-            st.header("🏭 Gestión Industrial y Calidad")
-            
-            st.markdown("### Especialización en Gestión de la Producción")
-            st.write("Planeamiento, Costos, Mantenimiento, Mejora Continua y Calidad")
-            st.write("Universidad Nacional de Ingeniería")
-            st.write("Setiembre 2010 – Febrero 2011 | 100 horas")
-            
-            st.divider()
-            
-            st.markdown("### Auditoría de Sistemas Integrados de Gestión")
-            st.write("ISO 9001, ISO 14001 y OHSAS 18001")
-            st.write("Universidad Nacional de Ingeniería")
-            st.write("Agosto – Setiembre 2010 | 20 horas")
-            
-            st.divider()
-            
-            # ==========================================
-            # HERRAMIENTAS DE ANÁLISIS
-            # ==========================================
-            
-            st.header("📈 Herramientas de Análisis")
-            
-            st.markdown("### Excel para Análisis de Datos")
-            st.write("Curso de Tablas Dinámicas con Excel")
-            st.write("Instituto DMC | Enero 2017 | 8 horas")
-            
-            # ==========================================
-            # ÁREAS DE ESPECIALIZACIÓN
-            # ==========================================
-            
-            st.header("🚀 Áreas de Especialización")
-            
-            col1, col2 = st.columns(2)
-            
-            with col1:
-                st.markdown("""
-                **📊 Data & Analytics**
-                - Business Intelligence
-                - Data Analytics
-                - Business Analytics
-                - Data Science
-                - Machine Learning
-                - Forecasting
-                - Inteligencia Artificial
-                """)
-            
-            with col2:
-                st.markdown("""
-                **💼 Negocio y Sectorial**
-                - SQL Server
-                - Python
-                - Power BI
-                - Análisis Comercial
-                - Inteligencia de Mercados
-                - Exportaciones
-                - Hidrocarburos y Energía
-                """)
+     # ==========================================
+# FORMACIÓN ACADÉMICA
+# ==========================================
+
+st.header("🎓 Formación Académica")
+
+    st.markdown("### Bachiller en Ingeniería Industrial")
+    st.write("Universidad Tecnológica del Perú")
+    st.write("Egresado 2013")
+    
+    st.divider()
+    
+    # ==========================================
+    # DATOS, ANALÍTICA E IA
+    # ==========================================
+    
+    st.header("📊 Datos, Analítica e Inteligencia Artificial")
+    
+    st.markdown("### Diplomado Business Analyst")
+    st.write("Instituto DMC | Abril 2026 – Septiembre 2026 | 116 horas")
+    
+    st.divider()
+    
+    st.markdown("### Diplomado en Data Science")
+    st.write("Modelos Supervisados, Clusterización y Machine Learning")
+    st.write("Instituto DMC | Noviembre 2025 – Marzo 2026 | 96 horas")
+    
+    st.divider()
+    
+    st.markdown("### Programa Especializado en Machine Learning con Python")
+    st.write("Laboratorio de Datos Sociales | Septiembre 2025 – Enero 2026 | 75 horas")
+    
+    st.divider()
+    
+    st.markdown("### Programa de Alta Especialización en Análisis Predictivo")
+    st.write("Forecasting y Pronósticos")
+    st.write("Escuela Global | Enero – Junio 2025 | 200 horas")
+    
+    st.divider()
+    
+    st.markdown("### Especialización Power BI")
+    st.write("Instituto DMC | Julio 2025 – Septiembre 2025 | 44 horas")
+    
+    st.divider()
+    
+    st.markdown("### Especialización SQL Server for BI")
+    st.write("Instituto DMC | Noviembre 2023 – Enero 2024 | 44 horas")
+    
+    st.divider()
+    
+    st.markdown("### Programación y Ciencia de Datos con Python y RStudio")
+    st.write("Escuela Global | Setiembre – Diciembre 2023 | 170 horas")
+    
+    st.divider()
+    
+    # ==========================================
+    # ESPECIALIZACIÓN SECTORIAL
+    # ==========================================
+    
+    st.header("⚡ Especialización Sectorial")
+    
+    st.markdown("### Diplomado Especializado en Derecho de la Energía e Hidrocarburos")
+    st.write("ICADEG | Noviembre 2024 – Enero 2025 | 120 horas")
+    
+    st.divider()
+    
+    # ==========================================
+    # GESTIÓN INDUSTRIAL Y CALIDAD
+    # ==========================================
+    
+    st.header("🏭 Gestión Industrial y Calidad")
+    
+    st.markdown("### Especialización en Gestión de la Producción")
+    st.write("Planeamiento, Costos, Mantenimiento, Mejora Continua y Calidad")
+    st.write("Universidad Nacional de Ingeniería")
+    st.write("Setiembre 2010 – Febrero 2011 | 100 horas")
+    
+    st.divider()
+    
+    st.markdown("### Auditoría de Sistemas Integrados de Gestión")
+    st.write("ISO 9001, ISO 14001 y OHSAS 18001")
+    st.write("Universidad Nacional de Ingeniería")
+    st.write("Agosto – Setiembre 2010 | 20 horas")
+    
+    st.divider()
+    
+    # ==========================================
+    # HERRAMIENTAS DE ANÁLISIS
+    # ==========================================
+    
+    st.header("📈 Herramientas de Análisis")
+    
+    st.markdown("### Excel para Análisis de Datos")
+    st.write("Curso de Tablas Dinámicas con Excel")
+    st.write("Instituto DMC | Enero 2017 | 8 horas")
+    
+    # ==========================================
+    # ÁREAS DE ESPECIALIZACIÓN
+    # ==========================================
+    
+    st.header("🚀 Áreas de Especialización")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        **📊 Data & Analytics**
+        - Business Intelligence
+        - Data Analytics
+        - Business Analytics
+        - Data Science
+        - Machine Learning
+        - Forecasting
+        - Inteligencia Artificial
+        """)
+    
+    with col2:
+        st.markdown("""
+        **💼 Negocio y Sectorial**
+        - SQL Server
+        - Python
+        - Power BI
+        - Análisis Comercial
+        - Inteligencia de Mercados
+        - Exportaciones
+        - Hidrocarburos y Energía
+        """)
 
 # =====================================================
 # PROYECTO PBI LATAM
