@@ -360,6 +360,17 @@ if archivo:
         st.write(f"Dimensiones: {df.shape[0]} filas, {df.shape[1]} columnas")
 
     with tab2:
+        st.subheader("🔍 Auditoría de Calidad de Datos")
+        
+        # --- NUEVOS INDICADORES ---
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Total Filas", df.shape[0])
+        col2.metric("Total Columnas", df.shape[1])
+        duplicados = df.duplicated().sum()
+        col3.metric("Filas Duplicadas", duplicados, delta_color="inverse" if duplicados > 0 else "normal")
+
+        st.divider() # Línea divisoria elegante
+
         st.subheader("Diagnóstico de Nulos")
         nulos = generar_reporte_nulos(df)
         
@@ -367,11 +378,11 @@ if archivo:
             st.warning(f"Se encontraron valores nulos en {len(nulos)} columnas.")
             st.bar_chart(nulos)
         else:
-            st.success("¡Dataset perfecto! No se encontraron valores nulos.")
-            # Crear un gráfico de barras con ceros para todas las columnas
-            datos_cero = pd.Series(0, index=df.columns)
+            st.success("¡Integridad de datos: Sin valores nulos detectados!")
+            # Gráfico de barras de 0s (mejorado visualmente)
+            datos_cero = pd.DataFrame({'Nulos': 0}, index=df.columns)
             st.bar_chart(datos_cero)
-            st.info("Visualización: Todas las columnas tienen 0 valores nulos.")
+            st.info("La ausencia de barras confirma que el dataset está completo.")
 
     with tab3:
         st.subheader("Suite de Visualización")
