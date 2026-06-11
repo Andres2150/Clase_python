@@ -32,7 +32,7 @@ pagina = st.sidebar.radio(
         "🏠 Inicio",
         "👨‍💼 Currículum",
         "📊 Proyecto PBI LATAM",
-        "👨‍💼 Entregable Python",   # <- nombre exacto usado en el elif
+        "👨‍💼 Analiza tu data",   # <- nombre exacto usado en el elif
     ]
 )
 
