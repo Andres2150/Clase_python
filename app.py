@@ -32,7 +32,7 @@ pagina = st.sidebar.radio(
         "🏠 Inicio",
         "👨‍💼 Currículum",
         "📊 Proyecto PBI LATAM",
-        "👨‍💼 Analiza tu data",   # <- nombre exacto usado en el elif
+        "👨‍💼 Analiza tu data aquí",   # <- nombre exacto usado en el elif
     ]
 )
 
@@ -308,7 +308,7 @@ elif pagina == "📊 Proyecto PBI LATAM":
 # exactamente con el radio button del sidebar.
 # =====================================================
 
-elif pagina == "👨‍💼 Entregable Python":
+elif pagina == "👨‍💼 Analiza tu data aquí":
 
     st.title("🚀 Advanced Analytics Dashboard")
 
