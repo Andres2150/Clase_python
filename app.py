@@ -156,132 +156,132 @@ Formación orientada a gestión de operaciones, producción,
 costos, mejora continua, calidad y análisis empresarial.
 """)
 
-st.divider()
-
-# =====================================================
-# ESPECIALIZACIONES EN DATOS Y ANALÍTICA
-# =====================================================
-
-st.header("📊 Especializaciones en Datos y Analítica")
-
-st.markdown("""
-#### Diplomado en Data Science
-**Instituto DMC**
-- Modelos Supervisados
-- Clusterización
-- Machine Learning
-- Analítica Predictiva
-
-#### Programa Especializado en Machine Learning con Python
-**Laboratorio de Datos Sociales**
-- Modelos de Machine Learning
-- Ciencia de Datos
-- Automatización Analítica
-
-#### Especialización SQL Server for BI
-**Instituto DMC**
-- Consultas SQL
-- Extracción y Transformación de Datos
-- Reporting y Business Intelligence
-
-#### Especialización Power BI
-**Instituto DMC**
-- Modelado de Datos
-- Dashboards Ejecutivos
-- KPI e Indicadores de Gestión
-
-#### Programa de Alta Especialización en Análisis Predictivo
-**Escuela Global**
-- Forecasting
-- Series de Tiempo
-- Modelos Predictivos
-""")
-
-st.divider()
-
-# =====================================================
-# ESPECIALIZACIONES SECTORIALES
-# =====================================================
-
-st.header("⚡ Especializaciones Sectoriales")
-
-st.markdown("""
-#### Diplomado Especializado en Derecho de la Energía e Hidrocarburos
-**ICADEG**
-- Regulación Energética
-- Mercado de Combustibles
-- Hidrocarburos Líquidos y GLP
-
-#### Especialización en Gestión de la Producción
-**Universidad Nacional de Ingeniería (UNI)**
-- Planeamiento de Producción
-- Costos
-- Mantenimiento
-- Calidad
-- Mejora Continua
-""")
-
-st.divider()
-
-# =====================================================
-# FORTALEZAS PROFESIONALES
-# =====================================================
-
-st.header("🚀 Fortalezas Profesionales")
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.success("""
-### 🏭 Ingeniería Industrial
-
-- Gestión de Procesos
-- Operaciones
-- Productividad
-- Mejora Continua
-""")
-
-with col2:
-    st.info("""
-### 📈 Analítica y BI
-
-- Power BI
-- SQL
-- Python
-- Data Science
-- Machine Learning
-- Forecasting
-""")
-
-with col3:
-    st.warning("""
-### ⚡ Conocimiento de Negocio
-
-- Hidrocarburos
-- Energía
-- GLP
-- Regulación
-- Inteligencia Comercial
-""")
-    # ==========================================
-    # ÁREAS DE ESPECIALIZACIÓN
-    # ==========================================
-
-    st.header("🚀 Áreas de Especialización")
-
-    st.markdown("""
-    - Business Intelligence
-    - Data Analytics
-    - SQL
-    - Python
-    - Power BI
-    - Machine Learning
-    - Forecasting
-    - Inteligencia Artificial
-    - Análisis Comercial
-    - Exportaciones
-    - Hidrocarburos y Energía
-    """)
+        st.divider()
+        
+        # =====================================================
+        # ESPECIALIZACIONES EN DATOS Y ANALÍTICA
+        # =====================================================
+        
+        st.header("📊 Especializaciones en Datos y Analítica")
+        
+        st.markdown("""
+        #### Diplomado en Data Science
+        **Instituto DMC**
+        - Modelos Supervisados
+        - Clusterización
+        - Machine Learning
+        - Analítica Predictiva
+        
+        #### Programa Especializado en Machine Learning con Python
+        **Laboratorio de Datos Sociales**
+        - Modelos de Machine Learning
+        - Ciencia de Datos
+        - Automatización Analítica
+        
+        #### Especialización SQL Server for BI
+        **Instituto DMC**
+        - Consultas SQL
+        - Extracción y Transformación de Datos
+        - Reporting y Business Intelligence
+        
+        #### Especialización Power BI
+        **Instituto DMC**
+        - Modelado de Datos
+        - Dashboards Ejecutivos
+        - KPI e Indicadores de Gestión
+        
+        #### Programa de Alta Especialización en Análisis Predictivo
+        **Escuela Global**
+        - Forecasting
+        - Series de Tiempo
+        - Modelos Predictivos
+        """)
+        
+        st.divider()
+        
+        # =====================================================
+        # ESPECIALIZACIONES SECTORIALES
+        # =====================================================
+        
+        st.header("⚡ Especializaciones Sectoriales")
+        
+        st.markdown("""
+        #### Diplomado Especializado en Derecho de la Energía e Hidrocarburos
+        **ICADEG**
+        - Regulación Energética
+        - Mercado de Combustibles
+        - Hidrocarburos Líquidos y GLP
+        
+        #### Especialización en Gestión de la Producción
+        **Universidad Nacional de Ingeniería (UNI)**
+        - Planeamiento de Producción
+        - Costos
+        - Mantenimiento
+        - Calidad
+        - Mejora Continua
+        """)
+        
+        st.divider()
+        
+        # =====================================================
+        # FORTALEZAS PROFESIONALES
+        # =====================================================
+        
+        st.header("🚀 Fortalezas Profesionales")
+        
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.success("""
+        ### 🏭 Ingeniería Industrial
+        
+        - Gestión de Procesos
+        - Operaciones
+        - Productividad
+        - Mejora Continua
+        """)
+        
+        with col2:
+            st.info("""
+        ### 📈 Analítica y BI
+        
+        - Power BI
+        - SQL
+        - Python
+        - Data Science
+        - Machine Learning
+        - Forecasting
+        """)
+        
+        with col3:
+            st.warning("""
+        ### ⚡ Conocimiento de Negocio
+        
+        - Hidrocarburos
+        - Energía
+        - GLP
+        - Regulación
+        - Inteligencia Comercial
+        """)
+            # ==========================================
+            # ÁREAS DE ESPECIALIZACIÓN
+            # ==========================================
+        
+            st.header("🚀 Áreas de Especialización")
+        
+            st.markdown("""
+            - Business Intelligence
+            - Data Analytics
+            - SQL
+            - Python
+            - Power BI
+            - Machine Learning
+            - Forecasting
+            - Inteligencia Artificial
+            - Análisis Comercial
+            - Exportaciones
+            - Hidrocarburos y Energía
+            """)
 
 
 
