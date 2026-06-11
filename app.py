@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -142,146 +141,119 @@ Análisis de tendencias y comportamiento de registros comerciales para apoyar pr
 Participación en pruebas funcionales y validación de cambios antes de pases a producción del sistema SCOP.
 Capacitación a empresas del sector energético sobre procesos comerciales, flujos operativos y normativa
     """)
-# =====================================================
-# FORMACIÓN ACADÉMICA
-# =====================================================
 
-st.header("🎓 Formación Académica")
+    # ==========================================
+    # ESTUDIOS
+    # ==========================================
 
-st.markdown("""
-### Bachiller en Ingeniería Industrial
-**Universidad Tecnológica del Perú (UTP)**
+    st.header("🎓 Estudios y Certificaciones")
 
-Formación orientada a gestión de operaciones, producción,
-costos, mejora continua, calidad y análisis empresarial.
-""")
+    st.markdown("### Bachiller en Ingeniería Industrial")
+    st.write("Universidad Tecnológica del Perú")
+    st.write("Egresado Año 2013")
 
-st.divider()
-        
-        # =====================================================
-        # ESPECIALIZACIONES EN DATOS Y ANALÍTICA
-        # =====================================================
-        
-        st.header("📊 Especializaciones en Datos y Analítica")
-        
-        st.markdown("""
-        #### Diplomado en Data Science
-        **Instituto DMC**
-        - Modelos Supervisados
-        - Clusterización
-        - Machine Learning
-        - Analítica Predictiva
-        
-        #### Programa Especializado en Machine Learning con Python
-        **Laboratorio de Datos Sociales**
-        - Modelos de Machine Learning
-        - Ciencia de Datos
-        - Automatización Analítica
-        
-        #### Especialización SQL Server for BI
-        **Instituto DMC**
-        - Consultas SQL
-        - Extracción y Transformación de Datos
-        - Reporting y Business Intelligence
-        
-        #### Especialización Power BI
-        **Instituto DMC**
-        - Modelado de Datos
-        - Dashboards Ejecutivos
-        - KPI e Indicadores de Gestión
-        
-        #### Programa de Alta Especialización en Análisis Predictivo
-        **Escuela Global**
-        - Forecasting
-        - Series de Tiempo
-        - Modelos Predictivos
-        """)
-        
-        st.divider()
-        
-        # =====================================================
-        # ESPECIALIZACIONES SECTORIALES
-        # =====================================================
-        
-        st.header("⚡ Especializaciones Sectoriales")
-        
-        st.markdown("""
-        #### Diplomado Especializado en Derecho de la Energía e Hidrocarburos
-        **ICADEG**
-        - Regulación Energética
-        - Mercado de Combustibles
-        - Hidrocarburos Líquidos y GLP
-        
-        #### Especialización en Gestión de la Producción
-        **Universidad Nacional de Ingeniería (UNI)**
-        - Planeamiento de Producción
-        - Costos
-        - Mantenimiento
-        - Calidad
-        - Mejora Continua
-        """)
-        
-        st.divider()
-        
-        # =====================================================
-        # FORTALEZAS PROFESIONALES
-        # =====================================================
-        
-        st.header("🚀 Fortalezas Profesionales")
-        
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            st.success("""
-        ### 🏭 Ingeniería Industrial
-        
-        - Gestión de Procesos
-        - Operaciones
-        - Productividad
-        - Mejora Continua
-        """)
-        
-        with col2:
-            st.info("""
-        ### 📈 Analítica y BI
-        
-        - Power BI
-        - SQL
-        - Python
-        - Data Science
-        - Machine Learning
-        - Forecasting
-        """)
-        
-        with col3:
-            st.warning("""
-        ### ⚡ Conocimiento de Negocio
-        
-        - Hidrocarburos
-        - Energía
-        - GLP
-        - Regulación
-        - Inteligencia Comercial
-        """)
-            # ==========================================
-            # ÁREAS DE ESPECIALIZACIÓN
-            # ==========================================
-        
-            st.header("🚀 Áreas de Especialización")
-        
-            st.markdown("""
-            - Business Intelligence
-            - Data Analytics
-            - SQL
-            - Python
-            - Power BI
-            - Machine Learning
-            - Forecasting
-            - Inteligencia Artificial
-            - Análisis Comercial
-            - Exportaciones
-            - Hidrocarburos y Energía
-            """)
+    st.divider()
+
+    st.markdown("### Especialización en Gestión de la Producción")
+    st.write("Planeamiento, Costos, Mantenimiento, Mejora Continua y Calidad")
+    st.write("Universidad Nacional de Ingeniería")
+    st.write("Setiembre 2010 – Febrero 2011")
+    st.write("100 horas")
+
+    st.divider()
+
+    st.markdown("### Curso Taller: Auditoría de Sistemas Integrados de Gestión")
+    st.write("ISO 9001, ISO 14001 y OHSAS 18001")
+    st.write("Universidad Nacional de Ingeniería")
+    st.write("Agosto – Setiembre 2010")
+    st.write("20 horas")
+
+    st.divider()
+
+    st.markdown("### Diplomado Business Analyst")
+    st.write("Identificar necesidades del negocio, analizar procesos y datos, y convertirlos en soluciones que mejoren la toma de decisiones y los resultados de la empresa.")
+    st.write("Instituto DMC")
+    st.write("Abril 2026 – Septiembre 2026")
+    st.write("116 horas")
+
+    st.divider()
+
+    st.markdown("### Diplomado en Data Science")
+    st.write("Analisis de datos y construcción de modelos de Machine Learning que permitan predecir resultados, segmentar clientes y apoyar la toma de decisiones basada en datos.")
+    st.write("Modelos Supervisados, Clusterización y Machine Learning")
+    st.write("Instituto DMC")
+    st.write("Noviembre 2025 – Marzo 2026")
+    st.write("96 horas")
+
+    st.divider()
+    
+    st.markdown("### Programa Especializado en Machine Learning con Python")
+    st.write("Laboratorio de Datos Sociales")
+    st.write("Septiembre 2025 – Enero 2026")
+    st.write("75 horas")
+
+    st.divider()
+    
+    st.markdown("### Especialización Power BI")
+    st.write("Instituto DMC")
+    st.write("Julio 2025 – Septiembre 2025")
+    st.write("44 horas")
+
+    st.divider()
+
+    st.markdown("### Programa de Alta Especialización en Análisis Predictivo")
+    st.write("Pronósticos y Forecasting")
+    st.write("Escuela Global")
+    st.write("Enero – Junio 2025")
+    st.write("200 horas")
+
+    st.divider()
+
+    st.markdown("### Diplomado Especializado en Derecho de la Energía e Hidrocarburos")
+    st.write("ICADEG")
+    st.write("Noviembre 2024 – Enero 2025")
+    st.write("120 horas")
+
+    st.divider()
+
+    st.markdown("### Especialización en SQL Server for BI ")
+    st.write("Instituto DMC")
+    st.write("Noviembre 2023 – Enero 2024")
+    st.write("44 horas")
+    
+    st.divider()
+
+    st.markdown("### Programación y Ciencia de Datos con Python y RStudio")
+    st.write("Escuela Global")
+    st.write("Setiembre – Diciembre 2023")
+    st.write("170 horas")
+
+    st.divider()
+
+    st.markdown("### Curso de Tablas Dinámicas con Excel")
+    st.write("Instituto DMC")
+    st.write("Enero 2017")
+    st.write("8 horas")
+
+    # ==========================================
+    # ÁREAS DE ESPECIALIZACIÓN
+    # ==========================================
+
+    st.header("🚀 Áreas de Especialización")
+
+    st.markdown("""
+    - Business Intelligence
+    - Data Analytics
+    - SQL
+    - Python
+    - Power BI
+    - Machine Learning
+    - Forecasting
+    - Inteligencia Artificial
+    - Análisis Comercial
+    - Exportaciones
+    - Hidrocarburos y Energía
+    """)
 
 
 
@@ -511,4 +483,3 @@ st.sidebar.markdown("---")
 st.sidebar.write("Gabriel Mena López")
 st.sidebar.write("Business Intelligence")
 st.sidebar.write("Linkedin: https://www.linkedin.com/in/andresmena1")
-
