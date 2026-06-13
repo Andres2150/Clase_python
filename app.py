@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 import re
 
 # =====================================================
-# 1. CONFIGURACIÓN DE LA PÁGINA
+# 1. CONFIGURACIÓN DE LA PÁGINA (Primera instrucción)
 # =====================================================
 st.set_page_config(
     page_title="Gabriel Mena | Portafolio Streamlit",
@@ -16,6 +16,7 @@ st.set_page_config(
     layout="wide"
 )
 
+# Configuración de estilos globales para gráficos estáticos
 sns.set_theme(style="whitegrid")
 
 # Inicialización obligatoria de st.session_state para conservar el dataset entre secciones
@@ -41,6 +42,7 @@ pagina = st.sidebar.radio(
 
 st.sidebar.markdown("---")
 st.sidebar.write("**Gabriel Andrés Mena López**")
+st.sidebar.write("Business Intelligence & Data Analytics")
 st.sidebar.write("📩 gmena50@gmail.com")
 st.sidebar.write("🔗 [LinkedIn](https://www.linkedin.com/in/andresmena1/)")
 
@@ -102,26 +104,59 @@ if pagina == "🏠 Home":
 
 
 # =====================================================
-    # SECCIÓN 2: CARGA Y PERFIL (CÓDIGO CORREGIDO)
-    # =====================================================
+# SECCIÓN 2: CARGA Y PERFIL DEL DATASET (CON RE-INICIALIZACIÓN CORREGIDA)
+# =====================================================
+elif pagina == "📂 2. Carga y Perfil":
+    st.title("📂 Módulo 2: Carga y Perfil del Dataset")
+    st.write("Permitir cargar el archivo CSV con st.file_uploader() o seleccionar uno de los datasets del proyecto. Mostrar vista previa, dimensiones, columnas, tipos de datos y resumen inicial.")
+    
+    st.divider()
+    opcion_carga = st.radio("Seleccione el origen del archivo:", ["Subir mi propio CSV", "Seleccionar un Dataset del Proyecto"], horizontal=True)
+    
+    df_cargado = None
+
+    if opcion_carga == "Subir mi propio CSV":
+        archivo = st.file_uploader("Cargar dataset (.csv)", type=["csv"])
+        if archivo:
+            try:
+                df_cargado = pd.read_csv(archivo)
+            except Exception as e:
+                st.error(f"Error al leer el archivo CSV: {e}")
+    else:
+        dataset_selec = st.selectbox("Elija uno de los datasets predefinidos:", [
+            "AI_Impact_on_Jobs_2030.csv", 
+            "sample_-_superstore.csv", 
+            "synthetic_ecommerce_order_risk_dataset.csv", 
+            "Teen_Mental_Health_Dataset.csv"
+        ])
+        try:
+            df_cargado = pd.read_csv(dataset_selec)
+        except Exception:
+            st.warning(f"Archivo '{dataset_selec}' no encontrado localmente. Por favor, sube tu propio archivo usando la opción 'Subir mi propio CSV'.")
+
+    # Validar obligatoriamente que el archivo fue mapeado en pantalla
     if df_cargado is not None:
-        # Almacenamos el dataset original siempre
         st.session_state['df_original'] = df_cargado.copy()
         
-        # SOLUCIÓN: Verificamos si el dataset en sesión es diferente al seleccionado en pantalla
-        # Si el usuario cambió el selectbox o subió otro archivo, forzamos la actualización instantánea
-        if st.session_state['df'] is None or not st.session_state['df'].columns.equals(df_cargado.columns) or len(st.session_state['df']) != len(df_cargado):
+        # CORRECCIÓN DE ACTUALIZACIÓN DINÁMICA: 
+        # Si la sesión está vacía, o las dimensiones/columnas de la selección actual no coinciden con la memoria,
+        # significa que el usuario cambió el selectbox. Re-inicializamos por completo.
+        if (st.session_state['df'] is None or 
+            not st.session_state['df'].columns.equals(df_cargado.columns) or 
+            len(st.session_state['df']) != len(df_cargado)):
+            
             st.session_state['df'] = df_cargado.copy()
-            st.rerun() # Forzamos el rediseño inmediato de la interfaz de Streamlit
+            st.rerun() # Forzar re-render de componentes de Streamlit
             
         df_actual = st.session_state['df']
         st.success("¡Dataset inicializado y guardado en memoria de sesión!")
 
-        # Clasificación de variables
+        # Clasificación automática de variables
         num_cols = df_actual.select_dtypes(include=[np.number]).columns.tolist()
         cat_cols = df_actual.select_dtypes(include=['object', 'category']).columns.tolist()
         date_cols = df_actual.select_dtypes(include=['datetime64[ns]']).columns.tolist()
 
+        # Métricas rápidas requeridas por la pauta
         st.subheader("📊 Métricas Rápidas del Dataset")
         m1, m2, m3, m4, m5, m6 = st.columns(6)
         m1.metric("Número de Filas", df_actual.shape[0])
@@ -130,6 +165,45 @@ if pagina == "🏠 Home":
         m4.metric("Var. Categóricas", len(cat_cols))
         m5.metric("Valores Nulos", df_actual.isnull().sum().sum())
         m6.metric("Reg. Duplicados", df_actual.duplicated().sum())
+
+        # Mostrar alertas si el dataset carece de alguna estructura típica
+        if not num_cols: st.info("ℹ️ El dataset no contiene variables numéricas detectadas.")
+        if not cat_cols: st.info("ℹ️ El dataset no contiene variables categóricas detectadas.")
+        if not date_cols: st.info("ℹ️ El dataset no contiene variables explícitas de tipo fecha.")
+
+        st.divider()
+
+        # Selección/Filtro selectivo de columnas mediante multiselect
+        st.subheader("🎯 Selección de Columnas para Análisis")
+        columnas_filtradas = st.multiselect(
+            "Seleccione las columnas que desea conservar para trabajar (Por defecto se muestran todas):",
+            options=df_actual.columns.tolist(),
+            default=df_actual.columns.tolist()
+        )
+        
+        if columnas_filtradas:
+            df_actual = df_actual[columnas_filtradas]
+            st.session_state['df'] = df_actual
+        else:
+            st.warning("⚠️ Debes seleccionar al menos una columna.")
+
+        # Mostrar head(), dimensiones, nombres de columnas y tipos de datos
+        st.subheader("👀 Estructura y Vista Previa de los Datos Seleccionados")
+        tab_head, tab_types = st.tabs(["📋 Head (Primeras 10 filas)", "🧬 Columnas y Tipos de Datos"])
+        
+        with tab_head:
+            st.dataframe(df_actual.head(10), use_container_width=True)
+            st.caption(f"Dimensiones actuales: {df_actual.shape[0]} filas x {df_actual.shape[1]} columnas.")
+            
+        with tab_types:
+            info_dtypes = pd.DataFrame({
+                "Nombre de Columna": df_actual.columns,
+                "Tipo de Dato": [str(t) for t in df_actual.dtypes]
+            })
+            st.dataframe(info_dtypes, use_container_width=True)
+    else:
+        st.info("A la espera de la carga de un archivo para inicializar el perfilamiento.")
+
 
 # =====================================================
 # SECCIÓN 3: PROCESAMIENTO DE DATOS (FLEXIBLE)
@@ -148,6 +222,7 @@ elif pagina == "⚙️ 3. Procesamiento":
         st.subheader("🔤 1. Estandarización de Estructura")
         if st.button("Estandarizar Nombres de Columnas"):
             try:
+                # Reemplazar espacios por guiones bajos, remover caracteres especiales y pasar a minúsculas
                 nuevos_nombres = {col: re.sub(r'[^a-zA-Z0-9_]', '', col.replace(' ', '_')).lower() for col in df.columns}
                 df = df.rename(columns=nuevos_nombres)
                 st.session_state['df'] = df
@@ -242,7 +317,6 @@ elif pagina == "⚙️ 3. Procesamiento":
                 if seleccion_cat:
                     df_filtrado = df_filtrado[df_filtrado[col_f_cat].isin(seleccion_cat)]
 
-        # Filtro de fechas dinámico si la columna es datetime real
         if date_cols:
             col_f_fec = st.sidebar.selectbox("Filtrar por Rango Temporal:", ["Ninguno"] + date_cols)
             if col_f_fec != "Ninguno":
@@ -266,7 +340,7 @@ elif pagina == "⚙️ 3. Procesamiento":
 
 
 # =====================================================
-# SECCIÓN 4: ANÁLISIS VISUAL OBLIGATORIO (RECONFIGURADO)
+# SECCIÓN 4: ANÁLISIS VISUAL OBLIGATORIO (6 TABS REQUERIDOS)
 # =====================================================
 elif pagina == "📊 4. Análisis Visual":
     st.title("📊 Módulo 4: Análisis Visual Obligatorio")
@@ -276,12 +350,10 @@ elif pagina == "📊 4. Análisis Visual":
     if st.session_state['df'] is not None:
         df = st.session_state['df']
         
-        # Clasificación interna automática de variables
+        # Mapeo y clasificación de columnas
         num_cols = df.select_dtypes(include=[np.number]).columns.tolist()
         cat_cols = df.select_dtypes(include=['object', 'category']).columns.tolist()
         date_cols = df.select_dtypes(include=['datetime64[ns]']).columns.tolist()
-        
-        # Detección explícita de variables Binarias (solo dos valores únicos)
         bin_cols = [col for col in df.columns if df[col].dropna().nunique() == 2]
 
         # Estructuración obligatoria mediante 6 st.tabs()
@@ -294,21 +366,15 @@ elif pagina == "📊 4. Análisis Visual":
             "💡 Tab 6: Insights"
         ])
 
-        # =================================================
-        # TAB 1: RESUMEN
-        # =================================================
+        # --- TAB 1: RESUMEN ---
         with tab1:
             st.subheader("📋 Estado Estructural del Dataset")
             
             c1, col_m1, col_m2, col_m3 = st.columns([1, 1, 1, 1])
-            with c1:
-                st.metric("Dimensión del Dataframe", f"{df.shape[0]} x {df.shape[1]}")
-            with col_m1:
-                st.metric("Variables Binarias", len(bin_cols))
-            with col_m2:
-                st.metric("Total de Nulos", df.isnull().sum().sum())
-            with col_m3:
-                st.metric("Filas Duplicadas", df.duplicated().sum())
+            with c1: st.metric("Dimensión del Dataframe", f"{df.shape[0]} x {df.shape[1]}")
+            with col_m1: st.metric("Variables Binarias", len(bin_cols))
+            with col_m2: st.metric("Total de Nulos", df.isnull().sum().sum())
+            with col_m3: st.metric("Filas Duplicadas", df.duplicated().sum())
             
             st.divider()
             
@@ -334,12 +400,9 @@ elif pagina == "📊 4. Análisis Visual":
             else:
                 st.info("Sin variables numéricas para calcular resúmenes descriptivos.")
 
-        # =================================================
-        # TAB 2: ANÁLISIS UNIVARIADO
-        # =================================================
+        # --- TAB 2: ANÁLISIS UNIVARIADO ---
         with tab2:
             st.subheader("📈 Exploración Individual de Variables")
-            
             opcion_uni = st.radio("Tipo de variable a inspeccionar:", ["Numéricas", "Categóricas / Binarias"], horizontal=True, key="op_uni")
             
             if opcion_uni == "Numéricas" and num_cols:
@@ -370,12 +433,9 @@ elif pagina == "📊 4. Análisis Visual":
             else:
                 st.warning("No existen variables aptas en esta categoría para mapear la distribución.")
 
-        # =================================================
-        # TAB 3: ANÁLISIS BIVARIADO
-        # =================================================
+        # --- TAB 3: ANÁLISIS BIVARIADO (PARCHE SEGURO SIN TENDENCIA EXT.) ---
         with tab3:
             st.subheader("♊ Comparación e Interacción de Variables")
-            
             tipo_bivariado = st.selectbox("Seleccione el enfoque del análisis bivariado:", [
                 "Numérica vs Numérica (Scatter Plot)",
                 "Numérica por Categoría (Boxplot Comparativo)",
@@ -392,7 +452,8 @@ elif pagina == "📊 4. Análisis Visual":
                 if bx_x == bx_y:
                     st.warning("Por favor, seleccione variables distintas en cada eje.")
                 else:
-                    fig_scat = px.scatter(df, x=bx_x, y=bx_y, trendline="ols", title=f"Dispersión e Interacción: {bx_x} vs {bx_y}", template="plotly_white")
+                    # Corrección: Se remueve el parámetro 'trendline' para evitar requerir statsmodels en la nube
+                    fig_scat = px.scatter(df, x=bx_x, y=bx_y, title=f"Dispersión e Interacción: {bx_x} vs {bx_y}", template="plotly_white")
                     st.plotly_chart(fig_scat, use_container_width=True)
                     
             elif tipo_bivariado == "Numérica por Categoría (Boxplot Comparativo)" and num_cols and cat_cols:
@@ -414,12 +475,9 @@ elif pagina == "📊 4. Análisis Visual":
             else:
                 st.warning("No se cuenta con la combinación requerida de variables en el archivo actual.")
 
-        # =================================================
-        # TAB 4: ANÁLISIS MULTIVARIADO
-        # =================================================
+        # --- TAB 4: ANÁLISIS MULTIVARIADO ---
         with tab4:
             st.subheader("💠 Análisis Multidimensional y Correlaciones Estructuradas")
-            
             col_m1, col_m2 = st.columns([1, 2])
             
             with col_m1:
@@ -447,13 +505,9 @@ elif pagina == "📊 4. Análisis Visual":
                 else:
                     st.info("Insuficientes variables numéricas o categóricas para habilitar el gráfico de dispersión tri-variable.")
 
-        # =================================================
-        # TAB 5: ANÁLISIS TEMPORAL
-        # =================================================
+        # --- TAB 5: ANÁLISIS TEMPORAL ---
         with tab5:
             st.subheader("⏳ Análisis Evolutivo y Tendencias en el Tiempo")
-            
-            # Unir columnas de fecha explícitas detectadas y las que tengan indicios en el nombre
             potenciales_fechas = date_cols + [c for c in df.columns if any(k in c.lower() for k in ['date', 'fecha', 'year', 'año']) if c not in date_cols]
             
             if potenciales_fechas and num_cols:
@@ -466,7 +520,6 @@ elif pagina == "📊 4. Análisis Visual":
                 df_t = df_t.dropna(subset=[date_target]).sort_values(date_target)
                 
                 if not df_t.empty:
-                    # Permitir agrupación dinámica opcional por checkbox
                     agrupar_por_mes = st.checkbox("Agrupar métrica promediada por Mes/Año para suavizar tendencia")
                     
                     if agrupar_por_mes:
@@ -481,23 +534,20 @@ elif pagina == "📊 4. Análisis Visual":
                     st.error("No se hallaron registros temporales válidos que puedan ser procesados secuencialmente.")
             else:
                 st.info("Se requiere una columna formateada como fecha o año en conjunto con variables numéricas para trazar la pestaña temporal.")
-# =================================================
-        # TAB 6: INSIGHTS (ENFOQUE TOMA DE DECISIONES)
-        # =================================================
+
+        # --- TAB 6: INSIGHTS (PARCHE SEGURO DE LA DIAGONAL NUMPY) ---
         with tab6:
             st.subheader("💡 Resumen de Hallazgos Clave e Inteligencia de Negocio")
             st.write("Interpretación algorítmica y patrones de datos extraídos directamente del comportamiento de las variables activas:")
             
-            # Generación de Insights Dinámicos según los datos presentes
             if num_cols:
                 st.markdown("### 📊 Patrones en Variables Métricas")
-                for col in num_cols[:2]: # Analizamos las dos primeras variables numéricas de forma automatizada
+                for col in num_cols[:2]:
                     col_mean = df[col].mean()
                     col_std = df[col].std()
                     col_min = df[col].min()
                     col_max = df[col].max()
                     
-                    # Diagnóstico de variabilidad comercial o de proceso
                     coef_variacion = (col_std / col_mean) if col_mean != 0 else 0
                     grado_dispersion = "Alta volatilidad/dispersión" if coef_variacion > 0.3 else "Estabilidad comercial razonable"
                     
@@ -506,15 +556,12 @@ elif pagina == "📊 4. Análisis Visual":
             if len(num_cols) >= 2:
                 st.markdown("### 🔗 Correlaciones e Interdependencia")
                 try:
-                    # Calculamos la matriz de correlación absoluta
                     c_matrix = df[num_cols].corr().abs()
                     
-                    # SOLUCIÓN DEL BUG: Convertimos explícitamente a un array de NumPy 
-                    # para asegurar la asignación en la diagonal sin romper restricciones de Pandas
+                    # Corrección: Uso seguro mediante .to_numpy() para evitar ValueErrors estructurales
                     c_matrix_np = c_matrix.to_numpy()
                     np.fill_diagonal(c_matrix_np, 0)
                     
-                    # Reconstruimos temporalmente el DataFrame para buscar los índices máximos con comodidad
                     c_matrix_clean = pd.DataFrame(c_matrix_np, index=c_matrix.index, columns=c_matrix.columns)
                     
                     if not c_matrix_clean.empty and c_matrix_clean.max().max() > 0:
@@ -523,10 +570,13 @@ elif pagina == "📊 4. Análisis Visual":
                         v2 = c_matrix_clean[v1].idxmax()
                         st.success(f"🔍 **Patrón de Asociación Detectado:** Las variables **{v1}** y **{v2}** muestran la mayor fuerza de asociación lineal en el dataset actual con una correlación de `{max_corr_val:.2f}`. Cualquier cambio operativo o comercial en una de ellas repercutirá directamente en el comportamiento de la otra.")
                 except Exception as e:
-                    st.info("No se pudo automatizar el cálculo del par de variables con mayor correlación. Puedes revisar la matriz completa en la Tab 4.")
+                    st.info("No se pudo automatizar el cálculo asociativo. Puedes revisar el mapa completo en la Tab 4.")
             
             st.markdown("### 📈 Conclusión Estratégica para la Toma de Decisiones")
             st.markdown(f"""
             * **Optimización de Calidad:** La base de datos cuenta actualmente con un volumen de `{df.shape[0]}` filas válidas. Haber mitigado nulos o duplicados asegura certidumbre metodológica.
-            * **Enfoque en Procesos:** Se suger usar las segmentaciones cruzadas provistas en la **Tab 3** y **Tab 4** para identificar los nichos, categorías o clústeres operativos que concentran las anomalías estadísticas más críticas, reduciendo así la incertidumbre en las proyecciones de gestión.
+            * **Enfoque en Procesos:** Se sugiere usar las segmentaciones cruzadas provistas en la **Tab 3** y **Tab 4** para identificar los nichos, categorías o clústeres operativos que concentran las anomalías estadísticas más críticas, reduciendo así la incertidumbre en las proyecciones de gestión.
             """)
+            
+    else:
+        st.error("No hay datos cargados en el buffer. Regrese al Módulo '📂 2. Carga y Perfil' para inicializar el motor gráfico.")
