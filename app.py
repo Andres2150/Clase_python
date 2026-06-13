@@ -45,7 +45,7 @@ st.sidebar.write("Business Intelligence & Data Analytics")
 st.sidebar.write("gmena50@gmail.com")
 st.sidebar.write("[LinkedIn](https://www.linkedin.com/in/andresmena1/)")
 
- SECCIÓN 1: HOME
+#SECCIÓN 1: HOME
 
 if pagina == "Home":
     st.title("Portafolio Profesional: Data Analytics App")
