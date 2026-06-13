@@ -102,37 +102,17 @@ if pagina == "🏠 Home":
 
 
 # =====================================================
-# SECCIÓN 2: CARGA Y PERFIL DEL DATASET
-# =====================================================
-elif pagina == "📂 2. Carga y Perfil":
-    st.title("📂 Módulo 2: Carga y Perfil del Dataset")
-    
-    opcion_carga = st.radio("Seleccione el origen del archivo:", ["Subir mi propio CSV", "Seleccionar un Dataset del Proyecto"], horizontal=True)
-    df_cargado = None
-
-    if opcion_carga == "Subir mi propio CSV":
-        archivo = st.file_uploader("Cargar dataset (.csv)", type=["csv"])
-        if archivo:
-            try:
-                df_cargado = pd.read_csv(archivo)
-            except Exception as e:
-                st.error(f"Error al leer el archivo CSV: {e}")
-    else:
-        dataset_selec = st.selectbox("Elija uno de los datasets predefinidos:", [
-            "AI_Impact_on_Jobs_2030.csv", 
-            "sample_-_superstore.csv", 
-            "synthetic_ecommerce_order_risk_dataset.csv", 
-            "Teen_Mental_Health_Dataset.csv"
-        ])
-        try:
-            df_cargado = pd.read_csv(dataset_selec)
-        except Exception:
-            st.warning(f"Archivo '{dataset_selec}' no encontrado localmente. Por favor, sube tu propio archivo usando la opción 'Subir mi propio CSV'.")
-
+    # SECCIÓN 2: CARGA Y PERFIL (CÓDIGO CORREGIDO)
+    # =====================================================
     if df_cargado is not None:
+        # Almacenamos el dataset original siempre
         st.session_state['df_original'] = df_cargado.copy()
-        if st.session_state['df'] is None:
+        
+        # SOLUCIÓN: Verificamos si el dataset en sesión es diferente al seleccionado en pantalla
+        # Si el usuario cambió el selectbox o subió otro archivo, forzamos la actualización instantánea
+        if st.session_state['df'] is None or not st.session_state['df'].columns.equals(df_cargado.columns) or len(st.session_state['df']) != len(df_cargado):
             st.session_state['df'] = df_cargado.copy()
+            st.rerun() # Forzamos el rediseño inmediato de la interfaz de Streamlit
             
         df_actual = st.session_state['df']
         st.success("¡Dataset inicializado y guardado en memoria de sesión!")
@@ -150,42 +130,6 @@ elif pagina == "📂 2. Carga y Perfil":
         m4.metric("Var. Categóricas", len(cat_cols))
         m5.metric("Valores Nulos", df_actual.isnull().sum().sum())
         m6.metric("Reg. Duplicados", df_actual.duplicated().sum())
-
-        if not num_cols: st.info("ℹ️ El dataset no contiene variables numéricas detectadas.")
-        if not cat_cols: st.info("ℹ️ El dataset no contiene variables categóricas detectadas.")
-        if not date_cols: st.info("ℹ️ El dataset no contiene variables explícitas de tipo fecha.")
-
-        st.divider()
-
-        st.subheader("🎯 Selección de Columnas para Análisis")
-        columnas_filtradas = st.multiselect(
-            "Seleccione las columnas que desea conservar para trabajar (Por defecto se muestran todas):",
-            options=df_actual.columns.tolist(),
-            default=df_actual.columns.tolist()
-        )
-        
-        if columnas_filtradas:
-            df_actual = df_actual[columnas_filtradas]
-            st.session_state['df'] = df_actual
-        else:
-            st.warning("⚠️ Debes seleccionar al menos una columna.")
-
-        st.subheader("👀 Estructura y Vista Previa de los Datos Seleccionados")
-        tab_head, tab_types = st.tabs(["📋 Head (Primeras 10 filas)", "🧬 Columnas y Tipos de Datos"])
-        
-        with tab_head:
-            st.dataframe(df_actual.head(10), use_container_width=True)
-            st.caption(f"Dimensiones actuales: {df_actual.shape[0]} filas x {df_actual.shape[1]} columnas.")
-            
-        with tab_types:
-            info_dtypes = pd.DataFrame({
-                "Nombre de Columna": df_actual.columns,
-                "Tipo de Dato": [str(t) for t in df_actual.dtypes]
-            })
-            st.dataframe(info_dtypes, use_container_width=True)
-    else:
-        st.info("A la espera de la carga de un archivo para inicializar el perfilamiento.")
-
 
 # =====================================================
 # SECCIÓN 3: PROCESAMIENTO DE DATOS (FLEXIBLE)
